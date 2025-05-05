@@ -100,6 +100,7 @@ const HeroSection: React.FC = () => {
         priority
         sizes="100vw"
         className="absolute inset-0 object-cover object-center"
+        unoptimized
       />
       {/* Theme overlay */}
       <div className="absolute inset-0 bg-[#3a1812]/60" />

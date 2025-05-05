@@ -19,8 +19,8 @@ const dummyProducts = [
 ];
 
 export default function FeaturedGrid() {
-  const itemRefs = useRef([]);
-  const [visible, setVisible] = useState({});
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [visible, setVisible] = useState<Record<number, boolean>>({});
   const [scrollDir, setScrollDir] = useState('down');
   const lastScrollY = useRef(0);
 
@@ -41,7 +41,7 @@ export default function FeaturedGrid() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const idx = entry.target.dataset.index;
+          const idx = (entry.target as HTMLElement).dataset.index as string;
           setVisible((prev) => ({ ...prev, [idx]: entry.isIntersecting }));
         });
       },
@@ -66,7 +66,9 @@ export default function FeaturedGrid() {
             <div
               key={product.id}
               data-index={idx}
-              ref={(el) => (itemRefs.current[idx] = el)}
+              ref={(el) => {
+                itemRefs.current[idx] = el;
+              }}
               className={`transform ${translateY} transition-all duration-1000 ease-in-out ${
                 isVisible ? 'opacity-100' : 'opacity-0'
               }`}

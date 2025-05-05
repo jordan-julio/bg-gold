@@ -46,7 +46,7 @@ export default function RandomParallaxGallery({ gap = 0, speed=10 }) {
     []
   );
   const columns = useMemo(() => {
-    const cols = [[], [], [], []];
+    const cols: string[][] = [[], [], [], []];
     images.forEach((src, idx) => {
       cols[idx % 4].push(src);
     });
@@ -58,7 +58,7 @@ export default function RandomParallaxGallery({ gap = 0, speed=10 }) {
       <div className="w-full overflow-hidden max-h-screen bg-amber-50" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: `${gap}px` }}>
         {columns.map((colImages, colIdx) => {
           // Alternate vertical translateY per column
-          const translateY = colIdx % 2 === 0 ? ['-5%', '20%'] : ['0%', '-20%'];
+          const translateY: [string, string] = colIdx % 2 === 0 ? ['-5%', '20%'] : ['0%', '-20%'];
           return (
             <Parallax key={colIdx} translateY={translateY} speed={speed} style={{ height: 'auto' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: `${gap}px` }}>
