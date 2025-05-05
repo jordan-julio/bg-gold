@@ -7,6 +7,9 @@ import Footer from '@/components/Footer'
 import HeroSection from '@/components/HeroSection'
 import ScrollingMarquee from '@/components/ScrollingMarquee'
 import UpcomingEvents from '@/components/UpcomingEventsSection'
+import FeaturedGrid from '@/components/CustomCarousel'
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
+import RandomParallaxGallery from '@/components/RandomParallaxGallery'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -37,11 +40,17 @@ export default function Home() {
   return (
     <div className="grid items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col row-start-2 items-center sm:items-start w-full max-w-screen overflow-x-hidden">
-        <HeroSection />
-        <AboutSection />
-        <ScrollingMarquee />
-        <UpcomingEvents />
-        <Footer />
+        <ParallaxProvider>
+          <Parallax className='w-full' speed={-15}>
+            <HeroSection />
+          </Parallax>
+          <AboutSection />
+          <RandomParallaxGallery />
+          <ScrollingMarquee />
+          <UpcomingEvents />
+          <FeaturedGrid />
+          <Footer />
+        </ParallaxProvider>
       </main>
     </div>
   )
