@@ -8,7 +8,7 @@ import { useMemo } from 'react';
  * A Next.js component that renders a gallery of images with randomized multi-axis parallax effects.
  * Each image flies and spins at unique speeds and directions for a dynamic, immersive scroll experience.
  */
-export default function RandomParallaxGallery({ itemSize = 200, gap = 0, speed=10 }) {
+export default function RandomParallaxGallery({ gap = 0, speed=10 }) {
   // Precompute randomized configs for each image
   const images = useMemo(
     () => [
