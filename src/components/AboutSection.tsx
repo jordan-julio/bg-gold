@@ -1,11 +1,14 @@
-// components/StorySection.tsx
+// components/AboutSection.tsx
 'use client'
 
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
 
 export default function AboutSection() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null)
   const foundingYear = 2003
   const currentYear = new Date().getFullYear()
@@ -15,21 +18,31 @@ export default function AboutSection() {
     gsap.registerPlugin(ScrollTrigger)
     if (!sectionRef.current) return
 
-    gsap.fromTo(
-      sectionRef.current.querySelectorAll('.fade-up'),
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        ease: 'power4.out',
-        stagger: 0.2,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 85%',
-        },
-      }
-    )
+    // Create a ScrollTrigger instance
+    const trigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 85%',
+      onEnter: () => {
+        // Animation on enter
+        gsap.fromTo(
+          sectionRef.current?.querySelectorAll('.fade-up') || [],
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            ease: 'power4.out',
+            stagger: 0.2,
+            duration: 0.8,
+          }
+        )
+      },
+      once: true // Only trigger once
+    });
+
+    // Cleanup function
+    return () => {
+      trigger.kill(); // Kill the ScrollTrigger instance
+    };
   }, [])
 
   return (
@@ -41,20 +54,14 @@ export default function AboutSection() {
         {/* Left: Text */}
         <div className="flex-1 space-y-6">
           <h2 className="fade-up text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-800">
-            Our Story
+            {t('about.title')}
           </h2>
           <div className="fade-up w-24 h-1 bg-[#9d8858] rounded" />
           <p className="fade-up text-lg leading-relaxed">
-            PT Bagong Sejahtera Abadi (BG Gold) has been crafting exquisite
-            gold jewelry since 2003.  Nestled in Surabaya, we combine time-honored
-            techniques with forward-looking design to deliver pieces that become
-            lifelong treasures.
+            {t('about.paragraph1')}
           </p>
           <p className="fade-up text-lg leading-relaxed">
-            Quality is our cornerstone: every link, stone, and setting
-            undergoes rigorous inspection by our master craftsmen.  With over
-            <strong> {yearsInBusiness} years </strong> of passion and precision,
-            BG Gold remains the benchmark in Indonesian fine jewelry.
+            {t('about.paragraph2').replace('{years}', yearsInBusiness.toString())}
           </p>
         </div>
 
@@ -65,14 +72,14 @@ export default function AboutSection() {
               {yearsInBusiness}+
             </div>
             <div className="mt-2 text-lg font-medium text-gray-700">
-              Years of Excellence
+              {t('about.years')}
             </div>
           </div>
-          <button
+          <Link
+            href="/about"
             className="fade-up inline-flex items-center gap-2 px-8 py-3 bg-[#9d8858] hover:bg-amber-400 text-white font-medium rounded-full transition-shadow shadow-lg"
-            onClick={() => window.location.href = '/about'}
           >
-            Discover More
+            {t('about.button')}
             <svg
               className="w-5 h-5"
               fill="none"
@@ -86,7 +93,7 @@ export default function AboutSection() {
                 d="M5 12h14m-7-7l7 7-7 7"
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

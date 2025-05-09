@@ -10,6 +10,7 @@ import UpcomingEvents from '@/components/UpcomingEventsSection'
 import FeaturedGrid from '@/components/CustomCarousel'
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import RandomParallaxGallery from '@/components/RandomParallaxGallery'
+import GoldNewsletter from '@/components/NewsletterSection'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -49,6 +50,7 @@ export default function Home() {
           <ScrollingMarquee />
           <UpcomingEvents />
           <FeaturedGrid />
+          <GoldNewsletter />
           <Footer />
         </ParallaxProvider>
       </main>

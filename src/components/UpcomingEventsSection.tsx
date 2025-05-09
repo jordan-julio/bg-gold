@@ -5,35 +5,60 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { CalendarMonthOutlined } from '@mui/icons-material'
+import { useLanguage } from '@/context/LanguageContext'
 
-const events = [
-    { id: 2, city: 'Bandung',  venue: 'Paris van Java',           date: '10 Maret – 16 Maret' },
-    { id: 3, city: 'Cirebon',  venue: 'Toko Mas Merak',           date: '17 Maret – 23 Maret' },
-  { id: 1, city: 'Surabaya', venue: 'Tunjungan Plaza (Project X)', date: '21 Maret – 23 Maret' },
-  { id: 4, city: 'Surabaya', venue: 'Galaxy Mall (Kepo Market)',date: '18 April – 20 April' },
-  { id: 6, city: 'Bandung',  venue: 'Pameran APEPI',            date: '5 Juni – 7 Juli' },
-  { id: 5, city: 'Surabaya', venue: 'Atrium Royal',             date: '30 Juni – 6 Juli' },
+// Define types for events
+interface Event {
+  id: number;
+  city: string;
+  venue: string;
+  dateEn: string;
+  dateId: string;
+}
+
+// Events data with dates in both languages
+const events: Event[] = [
+  { id: 2, city: 'Bandung',  venue: 'Paris van Java',            dateEn: 'March 10 – March 16', dateId: '10 Maret – 16 Maret' },
+  { id: 3, city: 'Cirebon',  venue: 'Toko Mas Merak',            dateEn: 'March 17 – March 23', dateId: '17 Maret – 23 Maret' },
+  { id: 1, city: 'Surabaya', venue: 'Tunjungan Plaza (Project X)', dateEn: 'March 21 – March 23', dateId: '21 Maret – 23 Maret' },
+  { id: 4, city: 'Surabaya', venue: 'Galaxy Mall (Kepo Market)',  dateEn: 'April 18 – April 20', dateId: '18 April – 20 April' },
+  { id: 6, city: 'Bandung',  venue: 'Pameran APEPI',             dateEn: 'June 5 – July 7', dateId: '5 Juni – 7 Juli' },
+  { id: 5, city: 'Surabaya', venue: 'Atrium Royal',              dateEn: 'June 30 – July 6', dateId: '30 Juni – 6 Juli' }
 ]
 
 export default function UpcomingEventsSection() {
+  const { language, t } = useLanguage()
   const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
     if (!container.current) return
-    const cards = container.current.querySelectorAll<HTMLElement>('.timeline-card')
-    gsap.fromTo(
-      cards,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: container.current, start: 'top 80%' },
-      }
-    )
+    
+    // Create a ScrollTrigger instance
+    const trigger = ScrollTrigger.create({
+      trigger: container.current,
+      start: 'top 80%',
+      onEnter: () => {
+        const cards = container.current?.querySelectorAll<HTMLElement>('.timeline-card') || []
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: 'power3.out'
+          }
+        )
+      },
+      once: true // Only trigger once
+    })
+    
+    // Cleanup function
+    return () => {
+      trigger.kill() // Kill the ScrollTrigger instance
+    }
   }, [])
 
   return (
@@ -51,7 +76,7 @@ export default function UpcomingEventsSection() {
     >
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-serif font-bold text-center text-[#3a1812] mb-12">
-          Upcoming Events
+          {t('events.title')}
         </h2>
 
         {/* Grid + central gold line */}
@@ -81,7 +106,9 @@ export default function UpcomingEventsSection() {
                     <span className="text-lg font-semibold text-[#3a1812]">{evt.city}</span>
                   </div>
                   <h3 className="text-xl font-bold text-[#3a1812] mb-1">{evt.venue}</h3>
-                  <p className="text-gray-600">{evt.date}</p>
+                  <p className="text-gray-600">
+                    {language === 'en' ? evt.dateEn : evt.dateId}
+                  </p>
                 </div>
               </div>
             )

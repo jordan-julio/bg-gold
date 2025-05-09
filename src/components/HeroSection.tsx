@@ -8,8 +8,10 @@ import Image from 'next/image'
 import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp'
 import AnnouncementBar from './AnnouncementBar'
 import Header from './Header'
+import { useLanguage } from '@/context/LanguageContext'
 
 const HeroSection: React.FC = () => {
+  const { t } = useLanguage();
   const logoRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
@@ -103,7 +105,7 @@ const HeroSection: React.FC = () => {
         unoptimized
       />
       {/* Theme overlay */}
-      <div className="absolute inset-0 bg-[#3a1812]/60" />
+      <div className="absolute inset-0 bg-[#3a1812]/40" />
 
       {/* Logo & Nav */}
       <AnnouncementBar />
@@ -115,20 +117,20 @@ const HeroSection: React.FC = () => {
         className="flex-1 flex flex-col items-start justify-center relative z-10 max-w-3xl px-8 md:px-12 lg:px-24"
       >
         <h1 className="fade-in font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-          Menjadi Pemimpin Pasar Perhiasan Emas Yang Kompetitif
+          {t('hero.title')}
         </h1>
         <p className="fade-in mt-4 text-lg md:text-xl text-gray-200 max-w-md">
-          Dengan Merk Berkelas Dunia — Memadukan Kualitas, Keindahan, dan Kepercayaan
+          {t('hero.subtitle')}
         </p>
         {/* Brand Tagline */}
-        <p className="fade-in mt-2 text-sm uppercase text-yellow-400 tracking-wider">#beboldbegold</p>
+        <p className="fade-in mt-2 text-sm uppercase text-yellow-400 tracking-wider">{t('hero.tagline')}</p>
 
         <div ref={ctaRef} className="mt-10 flex flex-wrap gap-6">
           <Link
             href="/discover"
             className="cta-button relative overflow-hidden group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-medium rounded-full shadow-lg transform transition-all"
           >
-            <span className="relative z-10">Discover More</span>
+            <span className="relative z-10">{t('hero.discover')}</span>
             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
               <svg
                 className="w-5 h-5"
@@ -151,7 +153,7 @@ const HeroSection: React.FC = () => {
             href="/contact"
             className="cta-button relative overflow-hidden group flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-white/80 text-white font-medium rounded-full shadow-lg backdrop-blur-sm transform transition-all"
           >
-            <span className="relative z-10">Contact Us</span>
+            <span className="relative z-10">{t('hero.contact')}</span>
             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
               <svg
                 className="w-5 h-5"
@@ -173,8 +175,8 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Centered Scroll Indicator */}
-      <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 flex flex-col items-center text-white/70 text-xs uppercase tracking-widest">
-        <span className="mb-2">Scroll Down</span>
+      <div className="absolute left-1/2 bottom-1 transform -translate-x-1/2 flex flex-col items-center text-white/70 text-xs uppercase tracking-widest">
+        <span className="mb-2">{t('hero.scroll')}</span>
         <KeyboardDoubleArrowDownSharpIcon className="w-6 h-6 animate-bounce" />
       </div>
     </section>
