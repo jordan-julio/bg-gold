@@ -116,7 +116,7 @@ const HeroSection: React.FC = () => {
         ref={textRef}
         className="flex-1 flex flex-col items-start justify-center relative z-10 max-w-3xl px-8 md:px-12 lg:px-24"
       >
-        <h1 className="fade-in font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 className="fade-in font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[#e3e3e3] leading-tight">
           {t('hero.title')}
         </h1>
         <p className="fade-in mt-4 text-lg md:text-xl text-gray-200 max-w-md">
@@ -128,7 +128,7 @@ const HeroSection: React.FC = () => {
         <div ref={ctaRef} className="mt-10 flex flex-wrap gap-6">
           <Link
             href="/discover"
-            className="cta-button relative overflow-hidden group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-medium rounded-full shadow-lg transform transition-all"
+            className="cta-button relative overflow-hidden group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-[#e3e3e3] font-medium rounded-full shadow-lg transform transition-all"
           >
             <span className="relative z-10">{t('hero.discover')}</span>
             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
@@ -151,7 +151,7 @@ const HeroSection: React.FC = () => {
 
           <Link
             href="/contact"
-            className="cta-button relative overflow-hidden group flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-white/80 text-white font-medium rounded-full shadow-lg backdrop-blur-sm transform transition-all"
+            className="cta-button relative overflow-hidden group flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-white/80 text-[#e3e3e3] font-medium rounded-full shadow-lg backdrop-blur-sm transform transition-all"
           >
             <span className="relative z-10">{t('hero.contact')}</span>
             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
@@ -175,7 +175,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Centered Scroll Indicator */}
-      <div className="absolute left-1/2 bottom-1 transform -translate-x-1/2 flex flex-col items-center text-white/70 text-xs uppercase tracking-widest">
+      <div className="absolute left-1/2 bottom-1 transform -translate-x-1/2 flex flex-col items-center text-[#e3e3e3]/70 text-xs uppercase tracking-widest">
         <span className="mb-2">{t('hero.scroll')}</span>
         <KeyboardDoubleArrowDownSharpIcon className="w-6 h-6 animate-bounce" />
       </div>

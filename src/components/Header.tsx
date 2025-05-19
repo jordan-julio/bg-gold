@@ -15,9 +15,11 @@ export default function Header() {
   // Define nav items with translation keys
   const navItems = [
     { key: 'nav.home', href: '/', label: 'Home' },
-    { key: 'nav.about', href: '/about', label: 'About' },
-    { key: 'nav.contact', href: '/contact', label: 'Contact' },
-    { key: 'nav.ecatalog', href: '/e-catalog', label: 'E-Catalog' }
+    { key: 'nav.about', href: '/about-us', label: 'About Us' },
+    { key: 'nav.products', href: '/products', label: 'Our Product' },
+    { key: 'nav.howtoshop', href: '/how-to-shop', label: 'How To Shop' },
+    { key: 'nav.careers', href: '/careers', label: 'Careers' },
+    { key: 'nav.contact', href: '/contact-us', label: 'Contact Us' }
   ];
 
   return (
@@ -30,7 +32,7 @@ export default function Header() {
     >
       {/* MOBILE: hamburger */}
       <button
-        className="lg:hidden p-2 text-white"
+        className="lg:hidden p-2 text-[#e3e3e3]"
         onClick={() => setOpen(true)}
         aria-label="Open menu"
       >
@@ -55,7 +57,7 @@ export default function Header() {
             key={item.key}
             href={item.href}
             className="
-              nav-link text-white text-sm font-medium uppercase
+              nav-link text-amber-100 text-sm font-medium uppercase
               tracking-wider relative group flex flex-col
               items-center py-2
             "
@@ -73,7 +75,7 @@ export default function Header() {
       {/* backdrop */}
       <div
         className={`padding-top-6
-          fixed inset-0 bg-black/50 z-40
+          fixed inset-0 bg-black/30 backdrop-blur-sm z-40
           ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
           transition-opacity duration-300
         `}
@@ -83,12 +85,13 @@ export default function Header() {
       {/* drawer panel */}
       <aside
         className={`
+          backdrop-blur-sm
           fixed inset-y-0 left-0 z-50 w-64
-          bg-white/90 backdrop-blur-sm
+        bg-white shadow-xl
           transform
           ${open ? "translate-x-0" : "-translate-x-full"}
           transition-transform duration-300
-          flex flex-col
+          flex flex-col overflow-y-auto
         `}
       >
         {/* close button */}
@@ -107,14 +110,18 @@ export default function Header() {
               key={item.key}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="text-gray-800 text-lg font-semibold uppercase"
+              className="
+                text-[#2c3e50]  /* deep navy text */
+                hover:text-[#edca89] /* gold on hover */
+                text-lg font-semibold uppercase
+                transition-colors duration-200
+              "
             >
               {t(item.key)}
             </Link>
           ))}
-          
           {/* Add Language Switcher to mobile menu */}
-          <div className="mt-4 self-start">
+          <div className="mt-4 self-start rounded-lg">
             <LanguageSwitcher />
           </div>
         </nav>

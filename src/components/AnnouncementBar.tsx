@@ -66,9 +66,9 @@ export default function AnnouncementBar() {
   };
 
   return (
-    <div className="sticky top-0 z-50 relative">
+    <div className="sticky top-0 z-10 relative">
       {/* Frosted background */}
-      <div className="absolute inset-0 bg-yellow-100/25 backdrop-blur-lg shadow-lg shadow-black/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#3a1812] backdrop-blur-lg shadow-lg shadow-black/20 pointer-events-none" />
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto flex items-center justify-between py-2 px-4">
@@ -91,7 +91,7 @@ export default function AnnouncementBar() {
                 className="
                   flex-shrink-0 w-full text-center
                   uppercase text-sm tracking-wide
-                  text-white font-semibold drop-shadow-lg
+                  text-amber-100 font-semibold drop-shadow-lg
                 "
               >
                 {slide.text}

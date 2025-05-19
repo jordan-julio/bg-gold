@@ -20,18 +20,21 @@ const translations = {
   en: {
     // Header
     'nav.home': 'Home',
-    'nav.about': 'About',
+    'nav.about': 'About Us',
     'nav.contact': 'Contact',
     'nav.ecatalog': 'E-Catalog',
+    'nav.products': 'Products',
+    'nav.howtoshop': 'How To Shop',
+    'nav.careers': 'Careers',
     
     // Hero section
-    'hero.title': 'Becoming a Competitive Gold Jewelry Market Leader',
-    'hero.subtitle': 'With World-Class Brands — Combining Quality, Beauty, and Trust',
-    'hero.tagline': '#beboldbegold',
-    'hero.discover': 'Discover More',
-    'hero.contact': 'Contact Us',
-    'hero.scroll': 'Scroll Down',
-    
+    'hero.title':    'Dare to Shine with Luxury Gold Jewelry',
+    'hero.subtitle': 'Embrace Confidence and Timeless Elegance',
+    'hero.tagline':  'Be Bold. Be Gold.',
+    'hero.discover': 'Explore Collection',
+    'hero.contact':  'Get in Touch',
+    'hero.scroll':   'Scroll to Discover',
+        
     // About section
     'about.title': 'Our Story',
     'about.paragraph1': 'PT Bagong Sejahtera Abadi (BG Gold) has been crafting exquisite gold jewelry since 2003. Nestled in Surabaya, we combine time-honored techniques with forward-looking design to deliver pieces that become lifelong treasures.',
@@ -89,15 +92,18 @@ const translations = {
     // Header
     'nav.home': 'Beranda',
     'nav.about': 'Tentang',
-    'nav.contact': 'Kontak',
+    'nav.contact': 'Hubungi Kami',
     'nav.ecatalog': 'E-Katalog',
+    'nav.products': 'Produk',
+    'nav.howtoshop': 'Cara Belanja',
+    'nav.careers': 'Karir',
     
     // Hero section
-    'hero.title': 'Menjadi Pemimpin Pasar Perhiasan Emas Yang Kompetitif',
-    'hero.subtitle': 'Dengan Merk Berkelas Dunia — Memadukan Kualitas, Keindahan, dan Kepercayaan',
-    'hero.tagline': '#beboldbegold',
-    'hero.discover': 'Jelajahi Selengkapnya',
-    'hero.contact': 'Hubungi Kami',
+    'hero.title':    'Berani Bersinar dengan Perhiasan Emas Mewah',
+    'hero.subtitle': 'Rangkul Kepercayaan Diri dan Keanggunan Abadi',
+    'hero.tagline':  'Be Bold. Be Gold.',
+    'hero.discover': 'Jelajahi Koleksi',
+    'hero.contact':  'Hubungi Kami',
     'hero.scroll': 'Gulir Ke Bawah',
     
     // About section

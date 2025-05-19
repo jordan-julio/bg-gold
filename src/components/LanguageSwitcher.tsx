@@ -39,10 +39,10 @@ export default function LanguageSwitcher() {
   const currentLang = languages.find(lang => lang.code === language);
   
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="language-switcher relative" ref={dropdownRef}>
       <button 
         onClick={toggleDropdown}
-        className="flex items-center gap-2 p-2 rounded-md border border-white/20 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-colors"
+        className="flex items-center gap-2 p-2 rounded-md border border-white/20 bg-amber-400 backdrop-blur-sm text-[#e3e3e3] hover:bg-white/20 transition-colors"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -55,8 +55,8 @@ export default function LanguageSwitcher() {
       
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute right-0 mt-1 w-40 rounded-md shadow-lg bg-white/90 backdrop-blur-md z-50">
-          <div className="py-1">
+        <div className="absolute left-0 mt-10 w-40 rounded-md shadow-lg bg-white/90 backdrop-blur-md z-50 overflow-hidden">
+          <div className="">
             {languages.map((lang) => (
               <button
                 key={lang.code}

@@ -75,7 +75,7 @@ export default function GoldNewsletter({ className = '' }: NewsletterSectionProp
                 transition duration-300
                 hover:bg-yellow-400 hover:text-black
                 disabled:opacity-50
-                text-white  
+                text-[#e3e3e3] 
               "
             >
               {t('newsletter.button')}

@@ -4,18 +4,18 @@ import React, { useEffect, useRef, useState } from 'react';
 
 // Dummy product data (12 items)
 const dummyProducts = [
-  { id: 1, image: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 2, image: 'https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 3, image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 4, image: 'https://images.unsplash.com/photo-1615655096345-61a54750068d?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 5, image: 'https://images.unsplash.com/photo-1631982645875-8bd1db34b1a1?q=80&w=2315&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 6, image: 'https://plus.unsplash.com/premium_photo-1709033404514-c3953af680b4?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 7, image: 'https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?q=80&w=2119&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 8, image: 'https://plus.unsplash.com/premium_photo-1709033511355-d2b8d7e86797?q=80&w=3749&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 9, image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 10, image: 'https://images.unsplash.com/photo-1615655096345-61a54750068d?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 11, image: 'https://images.unsplash.com/photo-1631982645875-8bd1db34b1a1?q=80&w=2315&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 12, image: 'https://plus.unsplash.com/premium_photo-1709033404514-c3953af680b4?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { id: 1, image: '/bagongReal/1.jpg' },
+  { id: 2, image: '/bagongReal/2.jpg' },
+  { id: 3, image: '/bagongReal/3.jpg' },
+  { id: 4, image: '/bagongReal/4.jpg' },
+  { id: 5, image: '/bagongReal/5.jpg' },
+  { id: 6, image: '/bagongReal/6.jpg' },
+  { id: 7, image: '/bagongReal/7.jpg' },
+  { id: 8, image: '/bagongReal/8.jpg' },
+  { id: 9, image: '/bagongReal/9.jpg' },
+  { id: 10, image: '/bagongReal/10.jpg' },
+  { id: 11, image: '/bagongReal/11.jpg' },
+  { id: 12, image: '/bagongReal/12.jpg' },
 ];
 
 export default function FeaturedGrid() {
@@ -80,6 +80,7 @@ export default function FeaturedGrid() {
                   layout="fill"
                   objectFit="cover"
                   className="object-cover w-full h-full transform transition-transform duration-700 ease-out group-hover:scale-110"
+                  priority={true}
                 />
                 <div className="absolute inset-0 bg-transparent bg-opacity-0 group-hover:bg-opacity-20 transition duration-700" />
               </div>

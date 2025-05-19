@@ -77,3 +77,19 @@ body {
   transform: translate(-50%, -50%) scale(2);
   opacity: 1;
 }
+
+.language-switcher {
+  @apply flex gap-2;
+  background: transparent;
+}
+.language-switcher button {
+  @apply px-3 py-1 text-sm font-medium transition-colors;
+  background: bg-amber-200;
+  color: #2c3e50;
+}
+.language-switcher button:hover {
+  @apply bg-amber-200;
+}
+.language-switcher button.active {
+  @apply bg-amber-400 text-white;
+}

@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 import HeroSection from '@/components/HeroSection'
 import ScrollingMarquee from '@/components/ScrollingMarquee'
 import UpcomingEvents from '@/components/UpcomingEventsSection'
-import FeaturedGrid from '@/components/CustomCarousel'
+//import FeaturedGrid from '@/components/CustomCarousel'
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import RandomParallaxGallery from '@/components/RandomParallaxGallery'
 import GoldNewsletter from '@/components/NewsletterSection'
@@ -49,7 +49,6 @@ export default function Home() {
           <RandomParallaxGallery />
           <ScrollingMarquee />
           <UpcomingEvents />
-          <FeaturedGrid />
           <GoldNewsletter />
           <Footer />
         </ParallaxProvider>

@@ -3,23 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FacebookOutlined, Twitter, Instagram, LinkedIn } from "@mui/icons-material";
-import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
   const { t } = useLanguage();
   const year = new Date().getFullYear();
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    // TODO: replace with real submission
-    setSubmitted(true);
-    setEmail('');
-    window.setTimeout(() => setSubmitted(false), 4000);
-  };
 
   // Define footer columns with translation keys
   const footerColumns = [
@@ -81,12 +69,12 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {footerColumns.map(col => (
             <div key={col.titleKey}>
-              <h4 className="text-white font-semibold mb-4">{t(col.titleKey)}</h4>
+              <h4 className="text-[#e3e3e3] font-semibold mb-4">{t(col.titleKey)}</h4>
               {col.items.map(item => (
                 <Link
                   key={item.key}
                   href={item.href}
-                  className="block py-1 hover:text-white transition-colors duration-200"
+                  className="block py-1 hover:text-[#e3e3e3] transition-colors duration-200"
                 >
                   {t(item.key)}
                 </Link>
@@ -107,7 +95,7 @@ export default function Footer() {
               height={48}
               className="object-contain drop-shadow-lg"
             />
-            <span className="ml-3 text-white font-bold text-xl">BG Gold</span>
+            <span className="ml-3 text-[#e3e3e3] font-bold text-xl">BG Gold</span>
           </Link>
 
           <div className="flex space-x-4">
@@ -120,7 +108,7 @@ export default function Footer() {
                 aria-label={t(key)}
               >
                 <Icon
-                  className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-400 hover:text-[#e3e3e3] transition-colors duration-200 cursor-pointer"
                   fontSize="large"
                 />
               </a>

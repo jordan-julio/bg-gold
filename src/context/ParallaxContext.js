@@ -28,7 +28,7 @@ export function useParallax(factor = 0.5, maxFactor = 0.5) {
     if (initial.current === null) {
       initial.current = offset;
     }
-  }, [offset]);
+  }, [initial, offset]);
 
   const start = initial.current ?? 0;
   const delta = offset - start;
