@@ -22,60 +22,99 @@ export default function AboutUs() {
   const timelineRef = useRef<HTMLElement | null>(null)
   
   useEffect(() => {
-    // Page loading effect
-    function onLoad() {
-      setLoading(false)
-      window.removeEventListener('load', onLoad)
+    // Preload critical images
+    const imagesToPreload = [
+      '/bagongReal/19.jpg',
+      '/bagongReal/23.jpg',
+      '/bagongReal/22.jpg'
+    ]
+    
+    let loadedImages = 0
+    const totalImages = imagesToPreload.length
+    
+    const imageLoaded = () => {
+      loadedImages++
+      if (loadedImages === totalImages) {
+        // All images are loaded, now we can hide the loader
+        setTimeout(() => setLoading(false), 500) // Small delay for smoother transition
+      }
     }
     
-    if (document.readyState === 'complete') {
+    // Start preloading all critical images
+    imagesToPreload.forEach(src => {
+      const img = document.createElement('img');
+      img.onload = imageLoaded
+      img.onerror = imageLoaded // Count errors as loaded to prevent hanging
+      img.src = src
+    })
+    
+    // Set a maximum wait time of 5 seconds, then show content regardless
+    const timeout = setTimeout(() => {
       setLoading(false)
-    } else {
-      window.addEventListener('load', onLoad)
-    }
+    }, 5000)
     
-    // Simple fade-in animations
-    const sections = [aboutSectionRef, visionSectionRef, missionSectionRef]
-    
-    sections.forEach(section => {
-      if (section.current) {
+    // Set up scroll animations (will execute after loading is complete)
+    const setupAnimations = () => {
+      // Simple fade-in animations
+      const sections = [aboutSectionRef, visionSectionRef, missionSectionRef]
+      
+      sections.forEach(section => {
+        if (section.current) {
+          gsap.fromTo(
+            section.current.querySelectorAll('.animate-in'),
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              stagger: 0.2,
+              duration: 0.8,
+              scrollTrigger: {
+                trigger: section.current,
+                start: "top 75%",
+              }
+            }
+          )
+        }
+      })
+      
+      // Timeline animation
+      if (timelineRef.current) {
+        const timelineItems = timelineRef.current.querySelectorAll('.timeline-item')
+        
         gsap.fromTo(
-          section.current.querySelectorAll('.animate-in'),
-          { opacity: 0, y: 30 },
+          timelineItems,
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
-            stagger: 0.2,
+            stagger: 0.3,
             duration: 0.8,
             scrollTrigger: {
-              trigger: section.current,
+              trigger: timelineRef.current,
               start: "top 75%",
             }
           }
         )
       }
-    })
-    
-    // Timeline animation
-    if (timelineRef.current) {
-      const timelineItems = timelineRef.current.querySelectorAll('.timeline-item')
-      
-      gsap.fromTo(
-        timelineItems,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.3,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: timelineRef.current,
-            start: "top 75%",
-          }
-        }
-      )
     }
-  }, [])
+    
+    // Setup animations if already loaded, or after loading completes
+    if (!loading) {
+      setupAnimations()
+    } else {
+      const checkLoading = setInterval(() => {
+        if (!loading) {
+          setupAnimations()
+          clearInterval(checkLoading)
+        }
+      }, 100)
+    }
+    
+    // Cleanup
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [loading])
 
   if (loading) {
     return (
