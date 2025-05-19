@@ -6,8 +6,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
 import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp'
-import AnnouncementBar from './AnnouncementBar'
-import Header from './Header'
 import { useLanguage } from '@/context/LanguageContext'
 
 const HeroSection: React.FC = () => {
@@ -106,11 +104,6 @@ const HeroSection: React.FC = () => {
       />
       {/* Theme overlay */}
       <div className="absolute inset-0 bg-[#3a1812]/40" />
-
-      {/* Logo & Nav */}
-      <AnnouncementBar />
-      <Header />
-
       {/* Hero Content */}
       <div
         ref={textRef}
