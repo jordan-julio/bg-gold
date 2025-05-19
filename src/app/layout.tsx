@@ -1,4 +1,5 @@
 // src/app/layout.tsx
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -35,6 +36,7 @@ export default function RootLayout({
           <CustomCursor />
           <Header />
           {children}
+          <Analytics />
         </LanguageProvider>
       </body>
     </html>
