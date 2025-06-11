@@ -76,10 +76,21 @@ export default function CustomCursor() {
   }, [])
 
   return (
-    <>
+    <div className=''>
       <div ref={blob} className="custom-cursor" />
       <div ref={ring} className="cursor-ring" />
       <div ref={dot}  className="cursor-dot" />    {/* New */}
-    </>
+      <style jsx>{
+      `
+        @media (hover: none) and (pointer: coarse) {
+        .custom-cursor,
+        .cursor-ring,
+        .cursor-dot {
+          display: none !important;
+        }
+      }
+      `  
+      }</style>
+    </div>
   )
 }

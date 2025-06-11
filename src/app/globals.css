@@ -93,3 +93,11 @@ body {
 .language-switcher button.active {
   @apply bg-amber-400 text-white;
 }
+
+.perspective-container {
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

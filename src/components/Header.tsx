@@ -140,11 +140,15 @@ export default function Header() {
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
-          <MenuIcon fontSize="large" />
+          <MenuIcon fontSize="large" style={{
+            color: '#3a1812',
+          }} />
         </button>
 
         {/* CENTERED LOGO */}
-        <Link href="/" aria-label="Go to homepage" className="">
+        <Link href="/" aria-label="Go to homepage" style={{
+          translate: '-8%',
+        }}>
           <Image
             src="/Logo-BSA-New-removebg-preview.png"
             alt="BG Gold Logo"

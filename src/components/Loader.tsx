@@ -42,7 +42,7 @@ export default function Loader({
 
   return (
     <div
-      className={`${styles.loader} ${
+      className={`text-white ${styles.loader} ${
         type === 'triangle' ? styles.triangle : ''
       }`}
       style={cssVars}

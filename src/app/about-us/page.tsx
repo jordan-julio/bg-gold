@@ -6,6 +6,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Loader from '@/components/Loader'
 import Footer from '@/components/Footer'
+import { cormorantGaramond } from '@/lib/fonts'
+import { useLanguage } from '@/context/LanguageContext'
 // import { useLanguage } from '@/context/LanguageContext'
 
 // Register GSAP plugins
@@ -14,7 +16,7 @@ if (typeof window !== 'undefined') {
 }
 
 export default function AboutUs() {
-  // const { t } = useLanguage()
+  const { t } = useLanguage()
   const [loading, setLoading] = useState(true)
   const aboutSectionRef = useRef<HTMLElement | null>(null)
   const visionSectionRef = useRef<HTMLElement | null>(null)
@@ -67,10 +69,10 @@ export default function AboutUs() {
               opacity: 1,
               y: 0,
               stagger: 0.2,
-              duration: 0.8,
+              duration: 0.7,
               scrollTrigger: {
                 trigger: section.current,
-                start: "top 75%",
+                start: "top 80%",
               }
             }
           )
@@ -91,7 +93,7 @@ export default function AboutUs() {
             duration: 0.8,
             scrollTrigger: {
               trigger: timelineRef.current,
-              start: "top 75%",
+              start: "top 80%",
             }
           }
         )
@@ -118,45 +120,52 @@ export default function AboutUs() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-[#edca89] flex items-center justify-center z-50">
-        <Loader type="circle" duration="2s" />
-        <Loader type="triangle" duration="2s" />
-        <Loader type="rect" duration='2s' />
+      <div className="fixed inset-0 bg-[#3a1812] flex items-center justify-center z-50 flex-col ">
+        <div>
+          <h1 className={`${cormorantGaramond.className} text-7xl sm:text-8xl lg:text-9xl font-semibold text-white mb-6 leading-none tracking-tight`}>
+            B<span className="text-[#ecca76]">G</span>
+          </h1>
+        </div>
+        <div className='flex flex-row'>
+          <Loader type="circle" duration="2s" />
+          <Loader type="triangle" duration="2s" />
+          <Loader type="rect" duration='2s' />
+        </div>
       </div>
     )
   }
 
   // Timeline milestones
   const milestones = [
-    { year: 2003, title: "Pendirian", description: "PT Bagong Sejahtera Abadi (BG Gold) didirikan di Surabaya" },
-    { year: 2009, title: "Pertumbuhan", description: "Ekspansi produksi dan pembukaan showroom pertama" },
-    { year: 2013, title: "Inovasi", description: "Pengenalan koleksi desain kontemporer" },
-    { year: 2018, title: "Pencapaian", description: "Merayakan 15 tahun dengan pelanggan ke-50.000" },
-    { year: 2023, title: "Saat Ini", description: "20+ tahun dedikasi dalam keunggulan perhiasan" }
+    { year: 2003, title: t('timeline.2003.title'), description: t('timeline.2003.description') },
+    { year: 2009, title: t('timeline.2009.title'), description: t('timeline.2009.description') },
+    { year: 2013, title: t('timeline.2013.title'), description: t('timeline.2013.description') },
+    { year: 2018, title: t('timeline.2018.title'), description: t('timeline.2018.description') },
+    { year: 2023, title: t('timeline.2023.title'), description: t('timeline.2023.description') }
   ]
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden">
+      <section className="relative h-[100vh] w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/bagongReal/19.jpg"
-            alt="Kerajinan perhiasan emas"
+            alt={t('about.hero.imageAlt')}
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent"></div>
         </div>
         
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 text-white">
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 drop-shadow-lg">
-            Tentang BG Gold
+            {t('about.hero.title')}
           </h1>
           <div className="w-28 h-1 bg-[#edca89] mx-auto mb-8"></div>
           <p className="max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
-            Menghadirkan keindahan perhiasan berkualitas tinggi dengan warisan keahlian Indonesia sejak 2003
+            {t('about.hero.description')}
           </p>
         </div>
       </section>
@@ -170,27 +179,27 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
             <div className="lg:col-span-3">
               <h2 className="animate-in text-3xl md:text-4xl font-serif font-bold text-[#3a1812] mb-6">
-                Sekilas Tentang Kami
+                {t('about.section.title')}
               </h2>
               <div className="animate-in w-28 h-1 bg-[#9d8858] mb-8"></div>
               <div className="animate-in space-y-6">
                 <p className="text-lg leading-relaxed text-[#3a1812]">
-                  BG GOLD Indonesia adalah pabrik perhiasan terkemuka yang berkomitmen untuk menghasilkan produk perhiasan berkualitas tinggi dengan desain yang elegan dan inovatif. Berdiri sejak 2003, kami telah berkembang menjadi salah satu produsen perhiasan terbaik di Indonesia dengan reputasi yang kuat dalam industri perhiasan lokal maupun internasional.
+                  {t('about.section.paragraph1')}
                 </p>
                 <p className="text-lg leading-relaxed text-[#3a1812]">
-                  Kami mengutamakan kualitas, ketelitian, dan keindahan dalam setiap produk yang kami buat. Dengan pengalaman lebih dari 20 tahun, BG GOLD Indonesia memiliki tim yang terampil dan berdedikasi untuk menghasilkan perhiasan yang tidak hanya mempesona, tetapi juga tahan lama dan bernilai tinggi.
+                  {t('about.section.paragraph2')}
                 </p>
               </div>
               <div className="animate-in mt-8 flex items-baseline space-x-3">
                 <div className="text-6xl font-bold text-[#9d8858] leading-none">
-                  22+
+                  {t('about.section.experienceNumber')}
                 </div>
-                <div className="text-lg font-medium text-[#3a1812]">Tahun Pengalaman</div>
+                <div className="text-lg font-medium text-[#3a1812]">{t('about.section.experienceLabel')}</div>
               </div>
             </div>
             
             <div className="lg:col-span-2 animate-in">
-              <div className="relative rounded-lg overflow-hidden shadow-lg">
+              <div className="relative rounded-4xl overflow-hidden shadow-lg">
                 <div className="aspect-[4/5]">
                   <Image
                     src="/bagongReal/23.jpg"
@@ -201,7 +210,7 @@ export default function AboutUs() {
                 </div>
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black to-transparent pt-16 pb-6 px-6">
                   <div className="text-white font-light text-sm italic">
-                    &quot;Setiap perhiasan dibuat dengan dedikasi penuh oleh tangan-tangan terampil pengrajin kami.&quot;
+                    {t('about.section.quote')}
                   </div>
                 </div>
               </div>
@@ -217,7 +226,7 @@ export default function AboutUs() {
       >
         <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-6">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#3a1812] text-center mb-6">
-            Perjalanan Kami
+            {t('timeline.title')}
           </h2>
           <div className="w-28 h-1 bg-[#9d8858] mx-auto mb-16"></div>
           
@@ -233,7 +242,7 @@ export default function AboutUs() {
               >
                 {/* Year circle */}
                 <div className="absolute left-[-35px] md:left-1/2 top-0 transform md:-translate-x-1/2 w-[70px] h-[70px] rounded-full bg-[#9d8858] text-white flex flex-col items-center justify-center z-10 shadow-lg">
-                  <span className="text-sm">Tahun</span>
+                  <span className="text-sm">{t('timeline.yearLabel')}</span>
                   <span className="text-xl font-bold">{milestone.year}</span>
                 </div>
                 
@@ -259,14 +268,14 @@ export default function AboutUs() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="animate-in text-3xl md:text-4xl font-serif font-bold mb-6">
-              Visi Perusahaan
+              {t('vision.title')}
             </h2>
             <div className="animate-in w-28 h-1 bg-[#edca89] mx-auto mb-8"></div>
           </div>
           
           <div className="animate-in flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-12">
-              <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-2xl">
+              <div className="relative h-80 md:h-100 rounded-lg overflow-hidden shadow-2xl">
                 <Image
                   src="/bagongReal/22.jpg"
                   alt="Tampilan perhiasan BG Gold"
@@ -278,7 +287,7 @@ export default function AboutUs() {
             
             <div className="w-full md:w-1/2 md:pl-6">
               <p className="text-xl md:text-2xl leading-relaxed italic font-serif">
-                &quot;Menjadi pemimpin dalam industri perhiasan, memberikan nilai tambah melalui produk yang inovatif, dan terus berkembang untuk memenuhi kebutuhan pasar global dengan standar kualitas terbaik.&quot;
+                {t('vision.quote')}
               </p>
               <div className="mt-8 w-24 h-0.5 bg-[#edca89]"></div>
             </div>
@@ -293,30 +302,30 @@ export default function AboutUs() {
       >
         <div className="max-w-5xl mx-auto">
           <h2 className="animate-in text-3xl md:text-4xl font-serif font-bold text-[#3a1812] text-center mb-6">
-            Misi Perusahaan
+            {t('mission.title')}
           </h2>
           <div className="animate-in w-28 h-1 bg-[#9d8858] mx-auto mb-16"></div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: "Kualitas Terbaik",
-                description: "Menghasilkan perhiasan dengan kualitas terbaik yang memenuhi harapan dan kebutuhan pelanggan.",
+                title: t('mission.quality.title'),
+                description: t('mission.quality.description'),
                 icon: "✦"
               },
               {
-                title: "Desain Inovatif",
-                description: "Mengedepankan desain yang inovatif dan unik dengan menggunakan bahan baku berkualitas tinggi.",
+                title: t('mission.innovation.title'),
+                description: t('mission.innovation.description'),
                 icon: "✦"
               },
               {
-                title: "Integritas & Kepercayaan",
-                description: "Berkomitmen untuk menjaga integritas, kepercayaan, dan kepuasan pelanggan melalui layanan yang profesional dan ramah.",
+                title: t('mission.integrity.title'),
+                description: t('mission.integrity.description'),
                 icon: "✦"
               },
               {
-                title: "Tanggung Jawab Sosial",
-                description: "Menjadi perusahaan yang bertanggung jawab secara sosial dan lingkungan.",
+                title: t('mission.responsibility.title'),
+                description: t('mission.responsibility.description'),
                 icon: "✦"
               }
             ].map((mission, index) => (
@@ -347,7 +356,7 @@ export default function AboutUs() {
       <section className="py-20 px-6 md:px-12 lg:px-24 bg-amber-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#3a1812] text-center mb-6">
-            Keunggulan Produk Kami
+            {t('aboutus.gallery.title')}
           </h2>
           <div className="w-28 h-1 bg-[#9d8858] mx-auto mb-16"></div>
           
@@ -361,7 +370,7 @@ export default function AboutUs() {
                 <div className="aspect-square">
                   <Image
                     src={src}
-                    alt={`Produk BG Gold ${index + 1}`}
+                    alt={`Product BG GOLD ${index + 1}`}
                     fill
                     className="object-cover transition-transform hover:scale-105 duration-500"
                   />

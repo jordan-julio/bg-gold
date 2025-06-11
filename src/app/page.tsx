@@ -11,6 +11,7 @@ import UpcomingEvents from '@/components/UpcomingEventsSection'
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import RandomParallaxGallery from '@/components/RandomParallaxGallery'
 import GoldNewsletter from '@/components/NewsletterSection'
+import { cormorantGaramond } from '@/lib/fonts'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -30,10 +31,17 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-[#edca89] flex items-center justify-center z-50">
-        <Loader type="circle" duration="2s" />
-        <Loader type="triangle" duration="2s" />
-        <Loader type="rect" duration='2s' />
+      <div className="fixed inset-0 bg-[#3a1812] flex items-center justify-center z-50 flex-col ">
+        <div>
+          <h1 className={`${cormorantGaramond.className} text-7xl sm:text-8xl lg:text-9xl font-semibold text-white mb-6 leading-none tracking-tight`}>
+            B<span className="text-[#ecca76]">G</span>
+          </h1>
+        </div>
+        <div className='flex flex-row'>
+          <Loader type="circle" duration="2s" />
+          <Loader type="triangle" duration="2s" />
+          <Loader type="rect" duration='2s' />
+        </div>
       </div>
     )
   }

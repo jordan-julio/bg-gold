@@ -180,7 +180,7 @@ export default function UpcomingEvents() {
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {pastEvents.map((event, idx) => (
                 <div key={idx} className="flex bg-white/80 rounded-lg overflow-hidden shadow-sm">
-                  <div className="relative w-24 h-24 shrink-0">
+                  <div className="relative w-24 shrink-0 h-full">
                     <Image 
                       src={event.image || "/placeholders/event-default.jpg"} 
                       alt={event.venue}

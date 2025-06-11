@@ -1,7 +1,7 @@
 /* components/Loader.module.css */
 .loader {
-    --path: #2f3545;
-    --dot: #5628ee;
+    --path: #ecca76;
+    --dot: #e3e3e3;
     --duration: 3s;
     position: relative;
     width: 44px;
