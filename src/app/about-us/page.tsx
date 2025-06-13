@@ -18,17 +18,21 @@ if (typeof window !== 'undefined') {
 export default function AboutUs() {
   const { t } = useLanguage()
   const [loading, setLoading] = useState(true)
+  const [, setImageLoadingProgress] = useState(0)
   const aboutSectionRef = useRef<HTMLElement | null>(null)
   const visionSectionRef = useRef<HTMLElement | null>(null)
   const missionSectionRef = useRef<HTMLElement | null>(null)
   const timelineRef = useRef<HTMLElement | null>(null)
   
   useEffect(() => {
-    // Preload critical images
+    // Complete list of all images used in the component
     const imagesToPreload = [
-      '/bagongReal/19.jpg',
-      '/bagongReal/23.jpg',
-      '/bagongReal/22.jpg'
+      '/bagongReal/19.jpg', // Hero image
+      '/bagongReal/23.jpg', // About section image
+      '/bagongReal/22.jpg', // Vision section image
+      '/bagongReal/1.jpg',  // Gallery image 1
+      '/bagongReal/2.jpg',  // Gallery image 2
+      '/bagongReal/3.jpg',  // Gallery image 3
     ]
     
     let loadedImages = 0
@@ -36,87 +40,127 @@ export default function AboutUs() {
     
     const imageLoaded = () => {
       loadedImages++
+      const progress = (loadedImages / totalImages) * 100
+      setImageLoadingProgress(progress)
+      
       if (loadedImages === totalImages) {
-        // All images are loaded, now we can hide the loader
-        setTimeout(() => setLoading(false), 500) // Small delay for smoother transition
+        // All images are loaded, add a small delay for smooth transition
+        setTimeout(() => {
+          setLoading(false)
+        }, 300)
       }
     }
     
-    // Start preloading all critical images
-    imagesToPreload.forEach(src => {
-      const img = document.createElement('img');
-      img.onload = imageLoaded
-      img.onerror = imageLoaded // Count errors as loaded to prevent hanging
-      img.src = src
-    })
+    const imageError = (src: string) => {
+      console.warn(`Failed to load image: ${src}`)
+      // Still count as "loaded" to prevent hanging
+      imageLoaded()
+    }
     
-    // Set a maximum wait time of 5 seconds, then show content regardless
-    const timeout = setTimeout(() => {
-      setLoading(false)
-    }, 5000)
-    
-    // Set up scroll animations (will execute after loading is complete)
-    const setupAnimations = () => {
-      // Simple fade-in animations
-      const sections = [aboutSectionRef, visionSectionRef, missionSectionRef]
-      
-      sections.forEach(section => {
-        if (section.current) {
-          gsap.fromTo(
-            section.current.querySelectorAll('.animate-in'),
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
-              stagger: 0.2,
-              duration: 0.7,
-              scrollTrigger: {
-                trigger: section.current,
-                start: "top 83%",
-              }
-            }
-          )
+    // Create promises for each image to ensure proper loading
+    const imagePromises = imagesToPreload.map(src => {
+      return new Promise<void>((resolve) => {
+        // Check if we're in the browser environment
+        if (typeof window !== 'undefined') {
+          const img = document.createElement('img')
+          
+          img.onload = () => {
+            imageLoaded()
+            resolve()
+          }
+          
+          img.onerror = () => {
+            imageError(src)
+            resolve() // Resolve anyway to prevent hanging
+          }
+          
+          // Set src last to start loading
+          img.src = src
+        } else {
+          // If not in browser (SSR), just resolve immediately
+          resolve()
         }
       })
+    })
+    
+    // Optional: Handle all images with Promise.all for better control
+    Promise.all(imagePromises).then(() => {
+      // This ensures all images have been processed (loaded or errored)
+      if (loadedImages < totalImages) {
+        // Fallback in case some images didn't trigger events properly
+        setTimeout(() => {
+          setLoading(false)
+        }, 100)
+      }
+    })
+    
+    // Fallback timeout - show content after maximum wait time
+    const maxWaitTimeout = setTimeout(() => {
+      console.warn('Image loading timeout reached, showing content anyway')
+      setLoading(false)
+    }, 8000) // Increased to 8 seconds for slower connections
+    
+    // Cleanup
+    return () => {
+      clearTimeout(maxWaitTimeout)
+    }
+  }, [])
+  
+  // Setup animations after loading is complete
+  useEffect(() => {
+    if (!loading) {
+      // Small delay to ensure DOM is ready
+      const setupTimer = setTimeout(() => {
+        setupAnimations()
+      }, 100)
       
-      // Timeline animation
-      if (timelineRef.current) {
-        const timelineItems = timelineRef.current.querySelectorAll('.timeline-item')
-        
+      return () => clearTimeout(setupTimer)
+    }
+  }, [loading])
+  
+  const setupAnimations = () => {
+    // Simple fade-in animations
+    const sections = [aboutSectionRef, visionSectionRef, missionSectionRef]
+    
+    sections.forEach(section => {
+      if (section.current) {
         gsap.fromTo(
-          timelineItems,
-          { opacity: 0, y: 20 },
+          section.current.querySelectorAll('.animate-in'),
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            stagger: 0.3,
-            duration: 0.8,
+            stagger: 0.2,
+            duration: 0.7,
             scrollTrigger: {
-              trigger: timelineRef.current,
+              trigger: section.current,
               start: "top 83%",
             }
           }
         )
       }
-    }
+    })
     
-    // Setup animations if already loaded, or after loading completes
-    if (!loading) {
-      setupAnimations()
-    } else {
-      const checkLoading = setInterval(() => {
-        if (!loading) {
-          setupAnimations()
-          clearInterval(checkLoading)
+    // Timeline animation
+    if (timelineRef.current) {
+      const timelineItems = timelineRef.current.querySelectorAll('.timeline-item')
+      
+      gsap.fromTo(
+        timelineItems,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.3,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top 83%",
+          }
         }
-      }, 100)
+      )
     }
-    
-    // Cleanup
-    return () => {
-      clearTimeout(timeout)
-    }
-  }, [loading])
+  }
 
   if (loading) {
     return (
