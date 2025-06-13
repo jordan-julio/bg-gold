@@ -79,8 +79,8 @@ const translations = {
     'timeline.2013.description': 'Introduced contemporary design collections',
     'timeline.2018.title': 'Milestone',
     'timeline.2018.description': 'Celebrated 15 years with our 50,000th customer',
-    'timeline.2023.title': 'Today',
-    'timeline.2023.description': 'Over 20 years of dedication to jewelry excellence',
+    'timeline.2025.title': 'Today',
+    'timeline.2025.description': 'Over 22+ years of dedication to jewelry excellence',
 
     // Vision Section
     'vision.title': 'Company Vision',
