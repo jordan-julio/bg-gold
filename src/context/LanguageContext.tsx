@@ -505,8 +505,8 @@ const translations = {
      'timeline.2013.description': 'Pengenalan koleksi desain kontemporer',
      'timeline.2018.title': 'Pencapaian',
      'timeline.2018.description': 'Merayakan 15 tahun dengan pelanggan ke-50.000',
-     'timeline.2023.title': 'Saat Ini',
-     'timeline.2023.description': '20+ tahun dedikasi dalam keunggulan perhiasan',
+     'timeline.2025.title': 'Saat Ini',
+     'timeline.2025.description': '22+ tahun dedikasi dalam keunggulan perhiasan',
  
      // Vision Section
      'vision.title': 'Visi Perusahaan',

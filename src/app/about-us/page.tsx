@@ -142,7 +142,7 @@ export default function AboutUs() {
     { year: 2009, title: t('timeline.2009.title'), description: t('timeline.2009.description') },
     { year: 2013, title: t('timeline.2013.title'), description: t('timeline.2013.description') },
     { year: 2018, title: t('timeline.2018.title'), description: t('timeline.2018.description') },
-    { year: 2023, title: t('timeline.2023.title'), description: t('timeline.2023.description') }
+    { year: 2025, title: t('timeline.2025.title'), description: t('timeline.2025.description') }
   ]
 
   return (
