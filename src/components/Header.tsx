@@ -109,8 +109,8 @@ export default function Header() {
   }, []);
 
   // Get text color class based on state
-  const textColorClass = useWhiteText ? "text-amber-100" : "text-amber-100";
-  const mobileIconClass = useWhiteText ? "text-amber-100" : "text-amber-100";
+  const textColorClass = useWhiteText ? "text-yellow-100" : "text-amber-100";
+  const mobileIconClass = useWhiteText ? "text-yellow-400" : "text-yellow-400";
 
   const headerStyle = {
     backgroundColor: headerOpacity > 0 
@@ -140,9 +140,7 @@ export default function Header() {
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
-          <MenuIcon fontSize="large" style={{
-            color: '#3a1812',
-          }} />
+          <MenuIcon fontSize="large" className="text-yellow-200"/>
         </button>
 
         {/* CENTERED LOGO */}
@@ -171,7 +169,7 @@ export default function Header() {
               `}
             >
               <span>{t(item.key)}</span>
-              <span className={`nav-underline absolute bottom-0 left-0 w-0 h-0.5 ${useWhiteText ? 'bg-white' : 'bg-[#9d8858]'} transition-all duration-300 group-hover:w-full`} />
+              <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${useWhiteText ? 'bg-yellow-400' : 'bg-[#9d8858]'} transition-all duration-300 group-hover:w-full`} />
             </Link>
           ))}
           

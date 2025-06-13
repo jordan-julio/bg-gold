@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-inter: system-ui, sans-serif;
+  --font-garamond: serif;
 }
 
 @theme inline {
@@ -22,9 +24,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
   overscroll-behavior: none;
 }
+
+h1, h2, h3, h4, h5, h6,
+.logo, blockquote, .pull-quote {
+  font-family: var(--font-garamond);
+}
+
+.font-serif { font-family: var(--font-garamond) !important; }
+.font-sans  { font-family: var(--font-inter)    !important; }
 
 /* pulsing blob */
 @keyframes cursor-pulse {
@@ -79,7 +89,7 @@ body {
 }
 
 .language-switcher {
-  @apply flex gap-2;
+  @apply flex;
   background: transparent;
 }
 .language-switcher button {

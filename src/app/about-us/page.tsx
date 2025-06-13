@@ -72,7 +72,7 @@ export default function AboutUs() {
               duration: 0.7,
               scrollTrigger: {
                 trigger: section.current,
-                start: "top 80%",
+                start: "top 83%",
               }
             }
           )
@@ -93,7 +93,7 @@ export default function AboutUs() {
             duration: 0.8,
             scrollTrigger: {
               trigger: timelineRef.current,
-              start: "top 80%",
+              start: "top 83%",
             }
           }
         )
@@ -120,13 +120,14 @@ export default function AboutUs() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-[#3a1812] flex items-center justify-center z-50 flex-col ">
-        <div>
-          <h1 className={`${cormorantGaramond.className} text-7xl sm:text-8xl lg:text-9xl font-semibold text-white mb-6 leading-none tracking-tight`}>
-            B<span className="text-[#ecca76]">G</span>
+      <div className="fixed inset-0 bg-gradient-to-br from-[#3a1812] via-[#2a1008] to-[#1a0804] flex items-center justify-center z-50 flex-col">
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#ecca76] to-[#d4af37] blur-3xl opacity-20 rounded-full"></div>
+          <h1 className={`${cormorantGaramond.className} relative text-7xl sm:text-8xl lg:text-9xl font-semibold text-white mb-6 leading-none tracking-tight`}>
+            B<span className="text-[#ecca76] drop-shadow-lg">G</span>
           </h1>
         </div>
-        <div className='flex flex-row'>
+        <div className='flex flex-row space-x-2'>
           <Loader type="circle" duration="2s" />
           <Loader type="triangle" duration="2s" />
           <Loader type="rect" duration='2s' />
@@ -231,33 +232,33 @@ export default function AboutUs() {
           <div className="w-28 h-1 bg-[#9d8858] mx-auto mb-16"></div>
           
           <div className="relative pb-12">
-            {/* Timeline center line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#9d8858]/20 transform md:-translate-x-1/2"></div>
-            
-            {/* Timeline items */}
-            {milestones.map((milestone, index) => (
-              <div 
-                key={milestone.year}
-                className="timeline-item relative mb-12 last:mb-0 ml-12 md:ml-0 md:grid md:grid-cols-2 md:gap-8"
-              >
-                {/* Year circle */}
-                <div className="absolute left-[-35px] md:left-1/2 top-0 transform md:-translate-x-1/2 w-[70px] h-[70px] rounded-full bg-[#9d8858] text-white flex flex-col items-center justify-center z-10 shadow-lg">
-                  <span className="text-sm">{t('timeline.yearLabel')}</span>
-                  <span className="text-xl font-bold">{milestone.year}</span>
-                </div>
-                
-                {/* Content - alternating sides */}
-                <div className={`
-                  md:col-span-1 bg-white shadow-md p-6 rounded-lg
-                  ${index % 2 === 0 ? 'border-r-4 border-[#9d8858] md:text-right md:mr-12' : 'border-l-4 border-[#9d8858] md:ml-12 md:col-start-2'}
-                `}>
-                  <h3 className="text-xl font-bold text-[#3a1812] mb-2">{milestone.title}</h3>
-                  <p className="text-[#3a1812]/80">{milestone.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+  {/* Timeline center line */}
+  <div className="absolute left-9 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#9d8858]/20 transform md:-translate-x-1/2"></div>
+  
+  {/* Timeline items */}
+  {milestones.map((milestone, index) => (
+    <div 
+      key={milestone.year}
+      className="timeline-item relative mb-12 last:mb-0 pl-24 md:pl-0 md:grid md:grid-cols-2 md:gap-8"
+    >
+      {/* Year circle */}
+      <div className="absolute left-[0px] md:left-1/2 top-0 transform md:-translate-x-1/2 w-[70px] h-[70px] rounded-full bg-[#9d8858] text-white flex flex-col items-center justify-center z-10 shadow-lg">
+        <span className="text-sm">{t('timeline.yearLabel')}</span>
+        <span className="text-xl font-bold">{milestone.year}</span>
+      </div>
+      
+      {/* Content - alternating sides */}
+      <div className={`
+        md:col-span-1 bg-white shadow-md p-6 rounded-lg
+        border-l-4 border-[#9d8858] md:${index % 2 === 0 ? 'border-r-4 border-[#9d8858] md:text-right md:mr-12 md:border-l-0' : 'border-l-4 border-[#9d8858] md:ml-12 md:col-start-2'}
+      `}>
+        <h3 className="text-xl font-bold text-[#3a1812] mb-2">{milestone.title}</h3>
+        <p className="text-[#3a1812]/80">{milestone.description}</p>
+      </div>
+    </div>
+  ))}
+</div>
+</div>
       </section>
       
       {/* Vision Section */}

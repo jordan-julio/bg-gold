@@ -107,7 +107,7 @@ const HeroSection: React.FC = () => {
       {/* Hero Content */}
       <div
         ref={textRef}
-        className="flex-1 flex flex-col items-start justify-center relative z-10 max-w-3xl px-8 md:px-12 lg:px-24"
+        className="flex-1 flex flex-col items-start justify-center relative z-10 max-w-3xl px-8 md:px-12 lg:px-24 pt-22"
       >
         <h1 className="fade-in font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[#e3e3e3] leading-tight">
           {t('hero.title')}

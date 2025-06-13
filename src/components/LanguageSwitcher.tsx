@@ -2,7 +2,7 @@
   
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage, Language } from '@/context/LanguageContext';
-import { ExpandMore } from '@mui/icons-material';
+//import { ExpandMore } from '@mui/icons-material';
 import Flag from 'react-world-flags'
 
 const languages = [
@@ -43,7 +43,7 @@ export default function LanguageSwitcher() {
     <div className="language-switcher relative" ref={dropdownRef}>
       <button 
         onClick={toggleDropdown}
-        className="flex items-center gap-2 p-2 min-w-fit min-h-full rounded-md border border-white/20 bg-amber-400 backdrop-blur-sm text-[#e3e3e3] hover:bg-white/20 transition-colors"
+        className="flex items-center gap-2 min-w-fit min-h-full rounded-md border border-white/20 bg-amber-400 backdrop-blur-sm text-[#e3e3e3] hover:bg-white/20 transition-colors"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -56,10 +56,10 @@ export default function LanguageSwitcher() {
                   height: 'fit',
                   borderRadius: '3px'
                 }} code="id" /> }</span>
-        <span className="text-sm font-medium">{currentLang?.code.toUpperCase()}</span>
+        {/**<span className="text-sm font-medium">{currentLang?.code.toUpperCase()}</span>
         <ExpandMore 
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : 'rotate-0'}`} 
-        />
+        />**/}
       </button>
       
       {/* Dropdown */}

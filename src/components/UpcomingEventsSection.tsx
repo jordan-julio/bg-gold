@@ -6,6 +6,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { CalendarMonth, Place } from '@mui/icons-material';
+import { useLanguage } from '@/context/LanguageContext';
 
 const events = [
   {
@@ -55,6 +56,7 @@ const events = [
 
 export default function UpcomingEvents() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
   
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -93,7 +95,7 @@ export default function UpcomingEvents() {
     <section ref={sectionRef} className="py-16 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-white to-amber-50 w-full">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#3a1812] text-center mb-4">
-          Upcoming Events
+          {t('events.title')}
         </h2>
         <div className="w-32 h-1 bg-[#9d8858] mx-auto mb-12 rounded"></div>
         
@@ -102,7 +104,7 @@ export default function UpcomingEvents() {
           <div className="mb-16 overflow-hidden rounded-2xl shadow-xl bg-white">
             <div className="relative">
               <div className="absolute top-0 left-0 bg-[#9d8858] text-white py-2 px-6 rounded-br-2xl font-medium z-10">
-                Featured
+                {t('events.feature')}
               </div>
               <div className="grid md:grid-cols-2">
                 <div className="relative h-64 md:h-auto min-h-64">
@@ -116,7 +118,7 @@ export default function UpcomingEvents() {
                 </div>
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <div className="inline-block px-4 py-1 rounded-full bg-amber-100 text-[#9d8858] font-medium text-sm mb-4">
-                    NEXT EVENT
+                    {t('events.nextevent')}
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-[#3a1812] mb-3">{featuredEvent.venue}</h3>
                   <div className="flex items-center text-[#3a1812]/80 mb-2">

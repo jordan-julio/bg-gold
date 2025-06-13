@@ -5,62 +5,64 @@ import Link from 'next/link'
 import Loader from '@/components/Loader'
 import Footer from '@/components/Footer'
 import { cormorantGaramond } from '@/lib/fonts'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function CareersPage() {
+    const { t } = useLanguage(); 
   const [isLoading, setIsLoading] = useState(true)
   const [activePosition, setActivePosition] = useState<string | null>(null)
 
   const positions = [
     {
       id: 'accounting',
-      title: 'Accounting Staff',
-      department: 'Finance',
-      type: 'Full-time',
-      location: 'Surabaya, Indonesia',
-      description: 'We are seeking a detail-oriented Accounting Staff to join our finance team and help maintain our financial excellence.',
+      title: t('careers.job.accounting.title'),
+      department: t('careers.job.accounting.department'),
+      type: t('careers.job.accounting.type'),
+      location: t('careers.job.accounting.location'),
+      description: t('careers.job.accounting.description'),
       requirements: [
-        'Perempuan, usia maksimal 27 tahun',
-        'Lulusan D3/S1 Akuntansi dengan IPK Min. 3',
-        'Fresh graduated / berpengalaman >1 tahun disukai',
-        'Mengerti General Ledger, Buku Pembantu, Persediaan, Register Bank, Pajak, dan Excel',
-        'Bahasa Mandarin & Inggris (pasif & aktif)',
-        'Menguasai Ms. Word, Excel, dan Internet',
-        'Sehat jasmani & rohani',
-        'Jujur, disiplin, cepat adaptasi, bertanggung jawab, teliti, team player',
+        t('careers.job.accounting.req1'),
+        t('careers.job.accounting.req2'),
+        t('careers.job.accounting.req3'),
+        t('careers.job.accounting.req4'),
+        t('careers.job.accounting.req5'),
+        t('careers.job.accounting.req6'),
+        t('careers.job.accounting.req7'),
+        t('careers.job.accounting.req8'),
       ],
       benefits: [
-        'Competitive salary package',
-        'Comprehensive health insurance',
-        'Annual performance bonus',
-        'Professional development programs',
-        'Career advancement opportunities',
-        'Positive work environment'
+        t('careers.benefits.salary'),
+        t('careers.benefits.health'),
+        t('careers.benefits.bonus'),
+        t('careers.benefits.development'),
+        t('careers.benefits.advancement'),
+        t('careers.benefits.environment'),
       ],
       mailto: 'mailto:careers@bggold.com?subject=Application%20-%20Accounting%20Staff',
     },
     {
       id: 'ppic',
-      title: 'PPIC Staff',
-      department: 'Operations',
-      type: 'Full-time',
-      location: 'Surabaya, Indonesia',
-      description: 'Join our operations team as a PPIC Staff to optimize production planning and inventory control processes.',
+      title: t('careers.job.ppic.title'),
+      department: t('careers.job.ppic.department'),
+      type: t('careers.job.ppic.type'),
+      location: t('careers.job.ppic.location'),
+      description: t('careers.job.ppic.description'),
       requirements: [
-        'Perempuan, usia maksimal 27 tahun',
-        'Lulusan S1 Teknik Industri / jurusan lainnya IPK Min. 3',
-        'Fresh graduated / berpengalaman >1 tahun disukai',
-        'Mahir berbahasa Inggris lisan & tulisan disukai',
-        'Menguasai Ms. Word, Excel, dan Internet',
-        'Sehat jasmani & rohani',
-        'Jujur, disiplin, cepat adaptasi, bertanggung jawab, teliti, team player',
+        t('careers.job.ppic.req1'),
+        t('careers.job.ppic.req2'),
+        t('careers.job.ppic.req3'),
+        t('careers.job.ppic.req4'),
+        t('careers.job.ppic.req5'),
+        t('careers.job.ppic.req6'),
+        t('careers.job.ppic.req7'),
       ],
       benefits: [
-        'Competitive compensation',
-        'Health and wellness benefits',
-        'Performance-based incentives',
-        'Training and development',
-        'Team building activities',
-        'Dynamic work culture'
+        t('careers.benefits.compensation'),
+        t('careers.benefits.wellness'),
+        t('careers.benefits.incentives'),
+        t('careers.benefits.training'),
+        t('careers.benefits.teambuilding'),
+        t('careers.benefits.culture')
       ],
       mailto: 'mailto:careers@bggold.com?subject=Application%20-%20PPIC%20Staff',
     },
@@ -68,23 +70,23 @@ export default function CareersPage() {
 
   const companyValues = [
     {
-      title: 'Excellence in Craftsmanship',
-      description: 'We maintain the highest standards in jewelry design and production, combining traditional techniques with modern innovation.',
+      title: t('careers.values.excellence.title'),
+      description: t('careers.values.excellence.description'),
       icon: '✨'
     },
     {
-      title: 'Professional Growth',
-      description: 'Continuous learning and development opportunities to advance your career in the luxury jewelry industry.',
+      title: t('careers.values.growth.title'),
+      description: t('careers.values.growth.description'),
       icon: '📈'
     },
     {
-      title: 'Collaborative Environment',
-      description: 'Work alongside talented professionals in a supportive, team-oriented atmosphere.',
+      title: t('careers.values.collaborative.title'),
+      description: t('careers.values.collaborative.description'),
       icon: '🤝'
     },
     {
-      title: 'Innovation & Tradition',
-      description: 'Balance cutting-edge technology with time-honored craftsmanship techniques.',
+      title: t('careers.values.innovation.title'),
+      description: t('careers.values.innovation.description'),
       icon: '💡'
     }
   ]
@@ -97,25 +99,26 @@ export default function CareersPage() {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 bg-[#3a1812] flex items-center justify-center z-50 flex-col ">
-        <div>
-        <h1 className={`${cormorantGaramond.className} text-7xl sm:text-8xl lg:text-9xl font-semibold text-white mb-6 leading-none tracking-tight`}>
-            B<span className="text-[#ecca76]">G</span>
-        </h1>
+        <div className="fixed inset-0 bg-gradient-to-br from-[#3a1812] via-[#2a1008] to-[#1a0804] flex items-center justify-center z-50 flex-col">
+        <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#ecca76] to-[#d4af37] blur-3xl opacity-20 rounded-full"></div>
+            <h1 className={`${cormorantGaramond.className} relative text-7xl sm:text-8xl lg:text-9xl font-semibold text-white mb-6 leading-none tracking-tight`}>
+            B<span className="text-[#ecca76] drop-shadow-lg">G</span>
+            </h1>
         </div>
-        <div className='flex flex-row'>
-        <Loader type="circle" duration="2s" />
-        <Loader type="triangle" duration="2s" />
-        <Loader type="rect" duration='2s' />
+        <div className='flex flex-row space-x-2'>
+            <Loader type="circle" duration="2s" />
+            <Loader type="triangle" duration="2s" />
+            <Loader type="rect" duration='2s' />
         </div>
-    </div>
+        </div>
     )
-  }
+    }
 
   return (
     <div className="min-h-screen ">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#3a1812] via-[#2e0f10] to-[#3a1812] text-white overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#3a1812] via-[#2e0f10] to-[#3a1812] text-white overflow-hidden pt-24">
         {/* Decorative Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-96 h-96 bg-[#ecca76] rounded-full opacity-10 blur-3xl animate-pulse"></div>
@@ -125,20 +128,20 @@ export default function CareersPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
             <span className="bg-gradient-to-r from-[#ecca76] via-[#ffd700] to-[#ecca76] bg-clip-text text-transparent">
-              Build Your Career
+              {t('careers.hero.title1')}
             </span>
             <br />
-            <span className="text-white">With BG Gold</span>
+            <span className="text-white">{t('careers.hero.title2')}</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 animate-fade-in-delayed leading-relaxed">
-            Join Indonesia&apos;s premier luxury jewelry company and be part of a legacy that spans over 25 years of excellence in craftsmanship and innovation.
+            {t('careers.hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delayed-2">
             <a href="#positions" className="px-8 py-4 bg-[#ecca76] text-[#3a1812] rounded-full font-semibold hover:bg-[#ffd700] transform hover:scale-105 transition-all duration-300 shadow-lg">
-              View Open Positions
+                {t('careers.hero.cta.positions')}
             </a>
             <a href="#values" className="px-8 py-4 border-2 border-[#ecca76] text-[#ecca76] rounded-full font-semibold hover:bg-[#ecca76] hover:text-[#3a1812] transform hover:scale-105 transition-all duration-300">
-              Why Join Us
+                {t('careers.hero.cta.whyjoin')}
             </a>
           </div>
         </div>
@@ -148,9 +151,9 @@ export default function CareersPage() {
       <section id="values" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#3a1812] mb-4">Why Choose BG Gold?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#3a1812] mb-4">{t('careers.values.title')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover what makes BG Gold an exceptional place to build your career
+                {t('careers.values.description')}
             </p>
           </div>
 
@@ -182,19 +185,19 @@ export default function CareersPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="animate-fade-in">
               <div className="text-4xl md:text-5xl font-bold text-[#ecca76] mb-2">25+</div>
-              <div className="text-gray-300">Years of Excellence</div>
+              <div className="text-gray-300">{t('careers.stats.years')}</div>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
               <div className="text-4xl md:text-5xl font-bold text-[#ecca76] mb-2">200+</div>
-              <div className="text-gray-300">Team Members</div>
+              <div className="text-gray-300">{t('careers.stats.team')}</div>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <div className="text-4xl md:text-5xl font-bold text-[#ecca76] mb-2">4</div>
-              <div className="text-gray-300">Showroom Locations</div>
+              <div className="text-gray-300">{t('careers.stats.locations')}</div>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <div className="text-4xl md:text-5xl font-bold text-[#ecca76] mb-2">1000+</div>
-              <div className="text-gray-300">Happy Customers Daily</div>
+              <div className="text-gray-300">{t('careers.stats.customers')}</div>
             </div>
           </div>
         </div>
@@ -204,9 +207,9 @@ export default function CareersPage() {
       <section id="positions" className="py-24 px-6 bg-[#faf8f6]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#3a1812] mb-4">Open Positions</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#3a1812] mb-4">{t('careers.positions.title')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our current opportunities and find your perfect role
+              {t('careers.positions.description')}
             </p>
           </div>
 
@@ -248,7 +251,7 @@ export default function CareersPage() {
                       onClick={() => setActivePosition(activePosition === position.id ? null : position.id)}
                       className="mt-4 md:mt-0 px-6 py-3 bg-[#ecca76] text-[#3a1812] rounded-full font-semibold hover:bg-[#ffd700] transition-all duration-300 flex items-center gap-2"
                     >
-                      {activePosition === position.id ? 'Hide Details' : 'View Details'}
+                      {activePosition === position.id ? t('careers.positions.hideDetails') : t('careers.positions.viewDetails')}
                       <svg 
                         className={`w-4 h-4 transform transition-transform ${activePosition === position.id ? 'rotate-180' : ''}`} 
                         fill="none" 
@@ -275,7 +278,7 @@ export default function CareersPage() {
                       <div>
                         <h4 className="text-xl font-bold text-[#3a1812] mb-4 flex items-center gap-2">
                           <span className="w-8 h-8 bg-[#ecca76] rounded-full flex items-center justify-center text-white text-sm">✓</span>
-                          Requirements
+                            {t('careers.positions.requirements')}
                         </h4>
                         <ul className="space-y-3">
                           {position.requirements.map((req, i) => (
@@ -291,7 +294,7 @@ export default function CareersPage() {
                       <div>
                         <h4 className="text-xl font-bold text-[#3a1812] mb-4 flex items-center gap-2">
                           <span className="w-8 h-8 bg-[#ecca76] rounded-full flex items-center justify-center text-white text-sm">★</span>
-                          What We Offer
+                          {t('careers.positions.benefits')}
                         </h4>
                         <ul className="space-y-3">
                           {position.benefits.map((benefit, i) => (
@@ -308,7 +311,7 @@ export default function CareersPage() {
                     <div className="pt-6 border-t border-gray-200">
                       <Link href={position.mailto} className="inline-block">
                         <button className="px-8 py-4 bg-gradient-to-r from-[#ecca76] to-[#ffd700] text-[#3a1812] rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3">
-                          Apply for This Position
+                          {t('careers.positions.apply')}
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                           </svg>
@@ -327,31 +330,31 @@ export default function CareersPage() {
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#3a1812] mb-4">What Our Team Says</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#3a1812] mb-4">{t('careers.testimonials.title')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hear from our employees about their experience at BG Gold
+                {t('careers.testimonials.description')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                quote: "Working at BG Gold has been an incredible journey. The company truly values craftsmanship and innovation.",
-                author: "ANON",
-                role: "Senior Designer",
-                years: "5 years at BG Gold"
+                quote: t('careers.testimonials.quote1'),
+                author: t('careers.testimonials.author1'),
+                role: t('careers.testimonials.role1'),
+                years: t('careers.testimonials.years1')
               },
               {
-                quote: "The supportive team environment and growth opportunities have helped me advance my career significantly.",
-                author: "ANON",
-                role: "Production Manager",
-                years: "3 years at BG Gold"
+                quote: t('careers.testimonials.quote2'),
+                author: t('careers.testimonials.author2'),
+                role: t('careers.testimonials.role2'),
+                years: t('careers.testimonials.years2')
               },
               {
-                quote: "BG Gold's commitment to excellence and professional development makes it an ideal workplace.",
-                author: "ANON",
-                role: "Finance Lead",
-                years: "7 years at BG Gold"
+                quote: t('careers.testimonials.quote3'),
+                author: t('careers.testimonials.author3'),
+                role: t('careers.testimonials.role3'),
+                years: t('careers.testimonials.years3')
               }
             ].map((testimonial, idx) => (
               <div key={idx} className="bg-[#faf8f6] rounded-2xl p-8 relative">
@@ -374,17 +377,17 @@ export default function CareersPage() {
       <section className="py-24 px-6 bg-gradient-to-r from-[#3a1812] to-[#2e0f10] text-white text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Start Your Journey?
+            {t('careers.cta.title')}
           </h2>
           <p className="text-xl mb-12 text-gray-300">
-            Take the first step towards a rewarding career with BG Gold. We&apos;re excited to hear from you.
+            {t('careers.cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="mailto:careers@bggold.com" className="px-8 py-4 bg-[#ecca76] text-[#3a1812] rounded-full font-semibold hover:bg-[#ffd700] transform hover:scale-105 transition-all duration-300 shadow-lg">
-              Send Your Application
+                {t('careers.cta.apply')}
             </Link>
             <Link href="/contact" className="px-8 py-4 border-2 border-[#ecca76] text-[#ecca76] rounded-full font-semibold hover:bg-[#ecca76] hover:text-[#3a1812] transform hover:scale-105 transition-all duration-300">
-              Contact HR Department
+                {t('careers.cta.contact')}
             </Link>
           </div>
         </div>
