@@ -38,9 +38,9 @@ export default function ProfessionalLandingPage() {
   ]
 
   const features = [
-    { icon: Shield, title: 'Certified Quality', desc: 'All products certified with international standards' },
-    { icon: Award, title: 'Trusted Excellence', desc: '25+ years of proven industry leadership' },
-    { icon: Star, title: 'Premium Service', desc: 'Personalized consultation and expert guidance' }
+    { icon: Shield, title: t('howtoshop.features.certified'), desc: t('howtoshop.features.desc') },
+    { icon: Award, title: t('howtoshop.features.trusted'), desc: t('howtoshop.features.trusteddesc') },
+    { icon: Star, title: t('howtoshop.features.service'), desc: t('howtoshop.features.servicedesc') }
   ]
 
   useEffect(() => {
@@ -110,7 +110,7 @@ export default function ProfessionalLandingPage() {
           <div className="mb-6">
             <div className="inline-flex items-center px-4 py-2 bg-amber-400/10 border border-amber-400/20 rounded-full text-amber-300 text-sm font-medium mb-8">
               <Shield className="w-4 h-4 mr-2" />
-              Certified Premium Quality Since 1998
+              {t('howtoshop.certified')}
             </div>
           </div>
           
@@ -166,10 +166,10 @@ export default function ProfessionalLandingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Our <span className="text-amber-500">Services</span>
+              {t('howtoshop.services')} <span className="text-amber-500">{t('howtoshop.services2')}</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Choose from our comprehensive range of professional services designed to meet your needs
+              {t('howtoshop.servicesdesc')}
             </p>
           </div>
 
@@ -328,27 +328,6 @@ export default function ProfessionalLandingPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#3a1812] via-[#2a1008] to-[#1a0804]">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Experience Excellence?
-          </h2>
-          <p className="text-xl text-slate-300 mb-8">
-            Join thousands of satisfied customers who trust Bagong Gold for their precious metal needs
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-900 rounded-lg font-semibold transition-all duration-300">
-              Get Started Today
-            </button>
-            <button className="px-8 py-4 border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-slate-900 rounded-lg font-semibold transition-all duration-300">
-              Schedule Consultation
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <Footer />
     </div>

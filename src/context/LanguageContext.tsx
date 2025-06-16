@@ -108,8 +108,8 @@ const translations = {
     // Hero section (HOW TO SHOP PAGE) //////////////////////
     'howtoshop.hero.title': 'SHOP WITH BG GOLD',
     'howtoshop.hero.description': 'Shop premium jewelry from the comfort of your home or visit our showroom in person.',
-    'howtoshop.hero.button.howtoshop': 'Cara Belanja',
-    'howtoshop.hero.button.products': 'Lihat Koleksi',
+    'howtoshop.hero.button.howtoshop': 'How to shop',
+    'howtoshop.hero.button.products': 'View Collection',
     
     // Features Section
     'howtoshop.card.online.title': 'Belanja Online',
@@ -118,6 +118,16 @@ const translations = {
     'howtoshop.card.partner.title': 'Partner Stores',
     'howtoshop.everyday': 'everyday',
     'howtoshop.liatpetakontak': 'Open Map & Contact',
+    'howtoshop.certified': 'Certified Premium Quality Since 2003',
+    'howtoshop.features.certified': 'Certified Quality',
+    'howtoshop.features.desc': 'All products certified with international standards',
+    'howtoshop.features.trusted': 'Trusted Excellence',
+    'howtoshop.features.trusteddesc': '25+ years of proven industry leadership',
+    'howtoshop.features.service': 'Premium Service',
+    'howtoshop.features.servicedesc': 'Personalized consultation and expert guidance',
+    'howtoshop.services': 'Our',
+    'howtoshop.services2': 'Services',
+    'howtoshop.servicesdesc': 'Choose from our comphrehensive range of professional services designed to meet your needs',
     ///////////////////////////////////////////////////
 
     // PRODUCT PAGE ///////////////////////////////
@@ -475,6 +485,17 @@ const translations = {
     'howtoshop.card.partner.title': 'Partner Stores',
     'howtoshop.everyday': 'tiap hari',
     'howtoshop.liatpetakontak': 'Lihat Peta & Kontak',
+    'howtoshop.certified': 'Kualitas Premium Bersertifikasi Sejak 2003',
+    'howtoshop.features.certified': 'Kualitas Terjamin',
+    'howtoshop.features.desc': 'Semua produk memenuhi standar internasional',
+    'howtoshop.features.trusted': 'Keunggulan Terpercaya',
+    'howtoshop.features.trusteddesc': '25+ tahun kepemimpinan industri yang terbukti',
+    'howtoshop.features.service': 'Layanan Premium',
+    'howtoshop.features.servicedesc': 'Konsultasi pribadi dan panduan ahli',
+    
+    'howtoshop.services': 'Layanan',
+    'howtoshop.services2': 'Kami',
+    'howtoshop.servicesdesc': 'Pilih dari berbagai layanan profesional komprehensif kami yang dirancang untuk memenuhi kebutuhan Anda',
     /////////////////////////////////////////
     // END///////////////////////////////////
     /////////////////////////////////////////
